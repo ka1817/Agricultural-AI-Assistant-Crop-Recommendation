@@ -1,0 +1,16 @@
+pandas 
+numpy 
+seaborn 
+matplotlib
+scikit-learn
+langchain
+langchain_groq
+python-dotenv
+xgboost
+mlflow
+pypdf
+langchain_community
+sentence-transformers 
+faiss-cpu
+langchain_hugginface
+rank_bm25

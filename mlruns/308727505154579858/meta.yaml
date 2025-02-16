@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/308727505154579858
+creation_time: 1739649064179
+experiment_id: '308727505154579858'
+last_update_time: 1739649064179
+lifecycle_stage: active
+name: SVC_GridSearch

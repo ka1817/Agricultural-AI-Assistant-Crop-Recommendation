@@ -1,0 +1,6 @@
+artifact_location: mlflow-artifacts:/148959594547896690
+creation_time: 1739649257354
+experiment_id: '148959594547896690'
+last_update_time: 1739649257354
+lifecycle_stage: active
+name: GradientBoosting_GridSearch

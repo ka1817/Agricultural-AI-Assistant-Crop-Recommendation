@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1739649139792
+current_stage: None
+description: ''
+last_updated_timestamp: 1739649139792
+name: RF_Model
+run_id: 7be5a439659d4274a47adfc717813c77
+run_link: ''
+source: mlflow-artifacts:/809510633914373352/7be5a439659d4274a47adfc717813c77/artifacts/best_random_forest_model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/809510633914373352/7be5a439659d4274a47adfc717813c77/artifacts/best_random_forest_model
+user_id: null
+version: 1

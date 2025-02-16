@@ -1,0 +1,14 @@
+aliases: []
+creation_timestamp: 1739649524702
+current_stage: None
+description: ''
+last_updated_timestamp: 1739649524702
+name: GB_Model
+run_id: 417ba78c49f845bd9ff43a5f9a381fb2
+run_link: ''
+source: mlflow-artifacts:/148959594547896690/417ba78c49f845bd9ff43a5f9a381fb2/artifacts/best_gradient_boosting_model
+status: READY
+status_message: null
+storage_location: mlflow-artifacts:/148959594547896690/417ba78c49f845bd9ff43a5f9a381fb2/artifacts/best_gradient_boosting_model
+user_id: null
+version: 1
