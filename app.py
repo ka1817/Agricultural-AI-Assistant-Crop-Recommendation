@@ -14,17 +14,14 @@ st.set_page_config(
     layout="wide"
 )
 
-# Load Environment Variables
 load_dotenv()
 os.environ['GROQ_API_KEY'] = os.getenv("GROQ_API_KEY")
 groq_api_key = os.getenv("GROQ_API_KEY")
 chat = ChatGroq(groq_api_key=groq_api_key, model_name="llama-3.3-70b-versatile")
 
-# Load Model
 model_path = r"C:\Users\saipr\Crop_Recommendation\saved_models\RF_Model.pkl"
 model = pickle.load(open(model_path, 'rb'))
 
-# Custom CSS Styling
 st.markdown("""
     <style>
         .title { text-align: center; color: mediumseagreen; }
@@ -44,29 +41,24 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-# Initialize Session State for Chatbot
 if 'flow_messages' not in st.session_state:
     st.session_state['flow_messages'] = [
         SystemMessage(content="You are a highly intelligent and friendly agricultural assistant. Provide accurate and relevant answers about crops, farming, and agricultural practices.")
     ]
 
-# Chatbot Response Function
 def get_response(question):
     st.session_state['flow_messages'].append(HumanMessage(content=question))
     answer = chat(st.session_state['flow_messages'])
     st.session_state['flow_messages'].append(AIMessage(content=answer.content))
     return answer.content
 
-# Sidebar Features
 st.markdown('<h1 class="title">🌾 Agricultural AI Assistant</h1>', unsafe_allow_html=True)
 st.sidebar.header("🔹 Features")
 features = st.sidebar.radio("Choose a feature:", ("Crop Recommendation", "Crop Disease Diagnosis", "Conversational Q&A"))
 
-# 🚀 Feature 1: Crop Recommendation (No MinMaxScaler)
 if features == "Crop Recommendation":
     st.write("### 📊 Provide the necessary agricultural parameters:")
 
-    # Input Fields
     N = st.number_input('Nitrogen', min_value=0, max_value=150, step=1)
     P = st.number_input('Phosphorus', min_value=0, max_value=100, step=1)
     K = st.number_input('Potassium', min_value=0, max_value=100, step=1)
@@ -79,16 +71,12 @@ if features == "Crop Recommendation":
         feature_list = [N, P, K, temp, humidity, ph, rainfall]
         single_pred = np.array(feature_list).reshape(1, -1)
         
-        # Make Prediction Directly
-        prediction = model.predict(single_pred)[0]  # Get first item
+        prediction = model.predict(single_pred)[0]  
 
-        # Convert to Proper Case
         crop = str(prediction).strip().title()
 
-        # Display result
         st.success(f"🌾 **{crop}** is the best crop for the provided data!")
 
-# 🌿 Feature 2: Crop Disease Diagnosis
 elif features == "Crop Disease Diagnosis":
     st.write("### 🦠 Diagnose Crop Diseases")
 
@@ -97,7 +85,6 @@ elif features == "Crop Disease Diagnosis":
     location = st.text_input("📍 Enter Location (e.g., Punjab, India):")
     season = st.selectbox("🗓 Select Season:", ["Summer", "Winter", "Rainy", "Spring", "Autumn"])
 
-    # LLM-based Diagnosis
     disease_prompt = PromptTemplate(
         input_variables=["symptoms", "crop", "location", "season"],
         template=(
@@ -123,7 +110,6 @@ elif features == "Crop Disease Diagnosis":
         response = chain.run(symptoms=symptoms, crop=crop, location=location, season=season)
         st.write(response)
 
-# 🗣 Feature 3: Conversational Q&A
 elif features == "Conversational Q&A":
     st.write("### 💬 Ask an Agriculture-related Question")
     user_input = st.text_input("Your Question:")
