@@ -44,7 +44,8 @@ Pickle 📦 (for model persistence)
 
 📂 Crop_Recommendation
 │── 📂 Chat                    
-│   ├── testing_prompts.ipynb   
+│   ├── testing_prompts.ipynb 
+    |---RAG.ipynb  
 │
 │── 📂 data                   
 │   ├── Crop_recommendation.csv 
